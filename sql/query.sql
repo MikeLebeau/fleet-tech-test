@@ -17,3 +17,11 @@ FROM order_details od
 INNER JOIN orders o USING (order_id) 
 INNER JOIN products p USING (product_id) 
 GROUP BY o.created_at;
+
+-- For part 3 (Prediction)
+-- Total sales amount, per day, per product
+SELECT o.created_at, p.name, SUM(p.unit_price*od.quantity) 
+FROM order_details od 
+INNER JOIN orders o USING (order_id) 
+INNER JOIN products p USING (product_id) 
+GROUP BY o.created_at, p.name;
