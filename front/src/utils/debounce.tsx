@@ -2,8 +2,8 @@
 export default function debounce(callback: Function, timeout: number = 300) {
     let timer: number;
 
-    return () => {
+    return (...args: any) => {
         clearTimeout(timer);
-        timer = setTimeout(() => { callback.apply(this); }, timeout);
+        timer = setTimeout(() => { callback.apply(this, args); }, timeout);
     };
 }
